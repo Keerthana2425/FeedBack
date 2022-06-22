@@ -4,6 +4,7 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom';
 
 import HeroPage from './Components/HeroPage/HeroPage';
 import LoginForm from './Components/LoginForm/LoginForm';
+import SignUp from './Components/SignUp/SignUp';
 
 function App() {
   return (
@@ -15,8 +16,11 @@ function App() {
         <Route exact path="/log-in">
           <LoginForm />
         </Route>
-        <Route path="/">
+        <Route exact path="/">
           <HeroPage />
+        </Route>
+        <Route exact path="/sign-up">
+          <SignUp />
         </Route>
       </Switch>
     </BrowserRouter>
