@@ -1,0 +1,16 @@
+@media screen and (max-width: 786px) {
+  .imgGrid {
+    /* width: 100%; */
+    display: none;
+  }
+  .heroGridCard {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 1036px) {
+  .gridContainer {
+    display: flex;
+    flex-direction: column;
+  }
+}

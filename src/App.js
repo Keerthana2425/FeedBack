@@ -5,6 +5,8 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import HeroPage from './Components/HeroPage/HeroPage';
 import LoginForm from './Components/LoginForm/LoginForm';
 import SignUp from './Components/SignUp/SignUp';
+// import SelectCountry from './Components/Reusable/SelectCountry';
+// import SelectCountry from './Components/Reusable/SelectCountry';
 
 function App() {
   return (
@@ -22,6 +24,9 @@ function App() {
         <Route exact path="/sign-up">
           <SignUp />
         </Route>
+        {/* <Route exact path="/country">
+          <SelectCountry />
+        </Route> */}
       </Switch>
     </BrowserRouter>
 

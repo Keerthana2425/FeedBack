@@ -18,12 +18,12 @@ function InputField(props) {
         startAdornment={icon}
         sx={{
           bgcolor: '#fff',
-          border: '1.5px solid #c0c1c1',
+          border: '0.5px solid #c0c1c1',
           textTransform: 'none',
           fontSize: '15px',
           fontWeight: '300',
-          height: '38px',
-          borderRadius: '8px',
+          height: '35px',
+          borderRadius: '5px',
           minWidth: '280px',
           '& fieldset': {
             border: 0,

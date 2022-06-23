@@ -21,26 +21,34 @@ function LoginForm() {
     setPassword(e.target.value);
   };
   const onLogin = () => {
-    console.log(email, password);
+    // console.log(email, password);
   };
   return (
     <Grid sx={{
       backgroundColor: '#F5F8FE', height: '100vh', width: '100', paddingLeft: '2%',
     }}
     >
-      <Link to="/">
-        <Grid
-          sx={{
-            height: '14vh',
-            width: '18%',
+      <Grid
+        sx={{
+          // border: '2px solid red',
+          height: '14vh',
+          width: '16%',
+
+        }}
+      >
+        <Link
+          to="/"
+          style={{
+            height: '100%',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
           }}
         >
-          <img style={{ height: '54%' }} src={logo} alt="logo" />
-        </Grid>
-      </Link>
+          <img style={{ height: '50%' }} src={logo} alt="logo" />
+
+        </Link>
+      </Grid>
 
       <Grid container sx={{ height: '72vh', width: '100%' }}>
         <Grid
