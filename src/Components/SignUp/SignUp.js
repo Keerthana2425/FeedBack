@@ -4,7 +4,7 @@ import {
 } from '@mui/material';
 import countryList from 'react-select-country-list';
 import Select from 'react-select';
-import ReactPhoneInput from 'react-phone-input-2';
+// import ReactPhoneInput from 'react-phone-input-2';
 // import LanguageOutlinedIcon from '@mui/icons-material/LanguageOutlined';
 
 import AccountCircleOutlinedIcon from '@mui/icons-material/AccountCircleOutlined';
@@ -30,8 +30,8 @@ function SignUp() {
   const [holderName, setHolderName] = useState('');
   const [value, setValue] = useState('');
   const [email, setEmail] = useState('');
-  const [contact, setContact] = useState('');
-  const [businessLogo, setBusinessLogo] = useState(null);
+  // const [contact, setContact] = useState('');
+  // const [businessLogo, setBusinessLogo] = useState(null);
   const [disableButton, setDisableButton] = useState(true);
   const [success, setSuccess] = useState(false);
   const options = useMemo(() => countryList().getData(), []);
@@ -40,10 +40,10 @@ function SignUp() {
     setValue(val);
   };
 
-  const onChangeBusinessLogo = (e) => {
-    // console.log(e.target.files[0]);
-    setBusinessLogo(e.target.files[0]);
-  };
+  // const onChangeBusinessLogo = (e) => {
+  //   // console.log(e.target.files[0]);
+  //   setBusinessLogo(e.target.files[0]);
+  // };
 
   const onChangeBusiness = (e) => {
     setBusinessName(e.target.value);
@@ -58,13 +58,13 @@ function SignUp() {
     setDisableButton(false);
   };
 
-  const onChangeContact = (val) => {
-    // console.log(val);
-    setContact(val);
-  };
+  // const onChangeContact = (val) => {
+  //   // console.log(val);
+  //   setContact(val);
+  // };
 
   const onRegister = () => {
-    console.log(businessName, holderName, value.label, contact, email, businessLogo);
+    // console.log(businessName, holderName, value.label, contact, email, businessLogo);
     setSuccess(!success);
   };
 
@@ -190,7 +190,7 @@ function SignUp() {
                       label="Contact"
                     />
                   </Grid>
-                  <Grid sx={{ margin: '2% 0 2% 0' }}>
+                  {/* <Grid sx={{ margin: '2% 0 2% 0' }}>
                     <ReactPhoneInput
                       inputExtraProps={{
                         name: 'phone',
@@ -202,13 +202,13 @@ function SignUp() {
                       // value={contact}
                       onChange={onChangeContact}
                     />
-                  </Grid>
-                  <Grid sx={{ margin: '3.5% 0 3% 0' }}>
+                  </Grid> */}
+                  {/* <Grid sx={{ margin: '3.5% 0 3% 0' }}>
                     <Grid marginBottom="8px">
                       Bussiness Logo
                     </Grid>
                     <input type="file" onChange={onChangeBusinessLogo} />
-                  </Grid>
+                  </Grid> */}
                   <Button
                     variant="contained"
                     // onClick={onLogin}
