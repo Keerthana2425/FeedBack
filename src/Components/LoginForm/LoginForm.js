@@ -2,14 +2,16 @@ import {
   Grid, Card, CardContent, Typography, Button,
 } from '@mui/material';
 import React, { useState } from 'react';
+import { useHistory, Link } from 'react-router-dom';
 import AccountCircleOutlinedIcon from '@mui/icons-material/AccountCircleOutlined';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
-import { Link } from 'react-router-dom';
 import InputField from '../Reusable/InputField';
-import logo from '../../Images/logo.png';
 import loginimg from '../../Images/login-image.png';
+import LogoComp from '../LogoComponents/logoComp';
 
 function LoginForm() {
+  // const navigate = useNavigate();
+  const history = useHistory();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
@@ -20,19 +22,23 @@ function LoginForm() {
   const handlePassword = (e) => {
     setPassword(e.target.value);
   };
-  const onLogin = () => {
+  const onLogin = (event) => {
     // console.log(email, password);
+    event.preventDefault();
+    history.push('/landing');
   };
   return (
     <Grid sx={{
-      backgroundColor: '#F5F8FE', height: '100vh', width: '100', paddingLeft: '2%',
+      backgroundColor: '#F5F8FE', height: '100vh', width: '100', paddingLeft: '3%',
     }}
     >
-      <Grid
+      {/* <Grid
         sx={{
           // border: '2px solid red',
           height: '14vh',
-          width: '16%',
+          width: '180px',
+          // paddingLeft: '2%',
+          marginLeft: '2%',
 
         }}
       >
@@ -48,7 +54,8 @@ function LoginForm() {
           <img style={{ height: '50%' }} src={logo} alt="logo" />
 
         </Link>
-      </Grid>
+      </Grid> */}
+      <LogoComp />
 
       <Grid container sx={{ height: '72vh', width: '100%' }}>
         <Grid
@@ -59,6 +66,7 @@ function LoginForm() {
             alignItems: 'center',
             justifyContent: 'center',
             height: '100%',
+            minWidth: '500px',
           }}
         >
           <img style={{ height: '62%' }} src={loginimg} alt="login" />
@@ -67,7 +75,11 @@ function LoginForm() {
           item
           xs={5}
           sx={{
-            display: 'flex', justifyContent: 'center', alignItems: 'center', paddingRight: '1.5%',
+            minWidth: '500px',
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            paddingRight: '5%',
           }}
         >
           <Card elevation={2} sx={{ width: '88%', padding: '2% 3.5% 2% 3.5%' }}>

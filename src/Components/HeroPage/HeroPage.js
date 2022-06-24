@@ -88,7 +88,7 @@ function HeroPage() {
             <Link to="/log-in" style={{ textDecoration: 'none' }}>
               <Button
                 variant="outlined"
-                // onClick={this.routeChange}
+                                // onClick={this.routeChange}
                 sx={{
                   height: '100%',
                   width: '100%',
@@ -160,9 +160,11 @@ function HeroPage() {
             <Button
               variant="contained"
               sx={{
-                height: '80%',
-                width: '27%',
+                textTransform: 'none',
+                height: '70%',
+                width: '45%',
                 backgroundColor: '#68E98D',
+                fontSize: '1.2rem',
                 fontWeight: '500',
                 color: 'black',
                 '&:hover': {
@@ -170,7 +172,7 @@ function HeroPage() {
                 },
               }}
             >
-              Get Started
+              Request a demo
             </Button>
           </Grid>
         </Grid>

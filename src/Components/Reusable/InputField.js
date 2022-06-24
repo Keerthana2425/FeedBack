@@ -10,6 +10,7 @@ function InputField(props) {
     <>
       <Grid sx={{ mb: 1, fontWeight: 400, fontColor: '#5F6A6F' }}>{label}</Grid>
       <OutlinedInput
+        required
         fullWidth
         value={searchValue}
         onChange={changeAction}
