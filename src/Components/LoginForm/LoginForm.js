@@ -2,15 +2,19 @@ import {
   Grid, Card, CardContent, Typography, Button,
 } from '@mui/material';
 import React, { useState } from 'react';
+// import { useSelector } from 'react-redux';
+
 import { useHistory, Link } from 'react-router-dom';
 import AccountCircleOutlinedIcon from '@mui/icons-material/AccountCircleOutlined';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import InputField from '../Reusable/InputField';
 import loginimg from '../../Images/login-image.png';
-import LogoComp from '../LogoComponents/logoComp';
+import LogoComp from '../Reusable/LogoComponents/logoComp';
 
 function LoginForm() {
   // const navigate = useNavigate();
+  // const users = useSelector((state) => state);
+  // console.log(users);
   const history = useHistory();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -28,9 +32,13 @@ function LoginForm() {
     history.push('/landing');
   };
   return (
-    <Grid sx={{
-      backgroundColor: '#F5F8FE', height: '100vh', width: '100', paddingLeft: '3%',
-    }}
+    <Grid
+      sx={{
+        backgroundColor: '#F5F8FE',
+        height: '100vh',
+        width: '100',
+        paddingLeft: '3%',
+      }}
     >
       {/* <Grid
         sx={{
@@ -90,51 +98,60 @@ function LoginForm() {
               <Grid sx={{ display: 'flex' }}>
                 <Grid>
                   <Typography sx={{ fontSize: '1.09rem', fontWeight: 550 }}>
-                    Don&apos;t have an account?
-                    &nbsp;
+                    Don&apos;t have an account? &nbsp;
                   </Typography>
                 </Grid>
                 <Link to="/sign-up" style={{ textDecoration: 'none' }}>
                   <Grid>
-                    <Typography sx={{
-                      fontSize: '1rem',
-                      fontWeight: 550,
-                      color: '#68E98D',
-                      '&:hover': {
-                        textDecorationLine: 'underline',
-                        cursor: 'pointer',
-                      },
-                    }}
+                    <Typography
+                      sx={{
+                        fontSize: '1rem',
+                        fontWeight: 550,
+                        color: '#68E98D',
+                        '&:hover': {
+                          textDecorationLine: 'underline',
+                          cursor: 'pointer',
+                        },
+                      }}
                     >
                       {' '}
                       Sign Up
                     </Typography>
                   </Grid>
                 </Link>
-
               </Grid>
               <Grid>
                 <Grid sx={{ margin: '3.5% 0 3.5% 0' }}>
                   <InputField
+                    type="text"
                     changeAction={handleEmail}
                     searchValue={email}
                     placeholder="Enter Email"
-                    icon={<AccountCircleOutlinedIcon fontSize="small" style={{ color: 'grey', marginRight: '20px' }} />}
+                    icon={(
+                      <AccountCircleOutlinedIcon
+                        fontSize="small"
+                        style={{ color: 'grey', marginRight: '20px' }}
+                      />
+                    )}
                     label="Email"
                   />
                 </Grid>
                 <Grid sx={{ margin: '3.5% 0 3.5% 0' }}>
                   <InputField
+                    type="password"
                     changeAction={handlePassword}
                     searchValue={password}
                     placeholder="Enter password"
-                    icon={<LockOutlinedIcon fontSize="small" style={{ color: 'grey', marginRight: '20px' }} />}
+                    icon={(
+                      <LockOutlinedIcon
+                        fontSize="small"
+                        style={{ color: 'grey', marginRight: '20px' }}
+                      />
+                    )}
                     label="Password"
                   />
                 </Grid>
-                <Typography>
-                  Forgot Password ?
-                </Typography>
+                <Typography>Forgot Password ?</Typography>
                 <Button
                   variant="contained"
                   onClick={onLogin}
@@ -153,7 +170,6 @@ function LoginForm() {
                   login
                 </Button>
               </Grid>
-
             </CardContent>
           </Card>
         </Grid>

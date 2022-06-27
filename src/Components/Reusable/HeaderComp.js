@@ -1,19 +1,28 @@
-import React, { useState } from 'react';
-import { Grid, Tabs, Tab } from '@mui/material';
+import React from 'react';
+import {
+  Grid, Tabs, Tab,
+} from '@mui/material';
 // import Logo from '../../Images/logo.png';
-// import LogoComp from '../LogoComponents/logoComp';
+// import { Dashboard } from '@mui/icons-material';
+import DashBoard from '../LandingPage/DashBoard';
+import LogoComp from './LogoComponents/logoComp';
+import Questionaries from '../LandingPage/Questionaries';
+import Displayer from '../LandingPage/Displayer';
+import SendLink from '../LandingPage/sendLink';
 
-function HeaderComp() {
-  const [value, setValue] = useState(0);
+function HeaderComp(props) {
+  // const [value, setValue] = useState(0);
 
-  const onTabChange = (e, val) => {
-    setValue(val);
-  };
+  // const onTabChange = (e, val) => {
+  //   setValue(val);
+  // };
+
+  const { value, onTabChange } = props;
 
   return (
     <>
-      <Grid container sx={{ height: '9vh', backgroundColor: '#263238', color: '#fff' }}>
-        <Grid item xs={3} sx={{ border: '1px solid blue', height: '100%' }}>
+      <Grid container sx={{ height: '8vh', backgroundColor: '#263238', color: '#68E98D' }}>
+        <Grid item xs={2} sx={{ height: '100%', border: '1px solid white' }}>
           {/* <img
           style={{
             height: '70%', position: 'relative', top: '15%', left: '10%',
@@ -21,23 +30,25 @@ function HeaderComp() {
           src={Logo}
           alt="logo"
         /> */}
-          hii
+          <LogoComp />
         </Grid>
         <Grid
           item
           xs={5}
           sx={{
-            border: '1px solid red', display: 'flex', alignSelf: 'flex-end',
+            display: 'flex', alignSelf: 'flex-end', justifyContent: 'center',
           }}
         >
           <Tabs
+            textColor="inherit"
             onChange={onTabChange}
             value={value}
+            fullWidth
+            centered
             variant="scrollable"
             TabIndicatorProps={{
               style: {
-                backgroundColor: 'white',
-                color: 'white',
+                backgroundColor: '#68E98D',
               },
             }}
           >
@@ -46,11 +57,26 @@ function HeaderComp() {
 
           </Tabs>
         </Grid>
-        <Grid item xs={4} sx={{ border: '1px solid black' }}>
+        <Grid item xs={5}>
           ppppp
         </Grid>
       </Grid>
-      {value === 1 ? <>hii</> : <>hello</>}
+      <Grid sx={{ backgroundColor: '#DEF6E5', padding: '0% 2.5%', height: '91vh' }}>
+        <Displayer />
+        <Grid
+          container
+          sx={{
+            height: '80%', display: 'flex', justifyContent: 'space-between',
+          }}
+        >
+          <Grid xs={7}>
+            {value === 0 ? (<DashBoard />) : (<Questionaries />)}
+          </Grid>
+          <Grid xs={4.8}>
+            <SendLink />
+          </Grid>
+        </Grid>
+      </Grid>
     </>
   );
 }

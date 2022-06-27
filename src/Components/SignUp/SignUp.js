@@ -4,7 +4,7 @@ import {
 } from '@mui/material';
 import countryList from 'react-select-country-list';
 import Select from 'react-select';
-// import ReactPhoneInput from 'react-phone-input-2';
+import ReactPhoneInput from 'react-phone-input-2';
 // import LanguageOutlinedIcon from '@mui/icons-material/LanguageOutlined';
 
 import AccountCircleOutlinedIcon from '@mui/icons-material/AccountCircleOutlined';
@@ -12,8 +12,7 @@ import EmailOutlinedIcon from '@mui/icons-material/EmailOutlined';
 
 import { Link } from 'react-router-dom';
 import InputField from '../Reusable/InputField';
-import LogoComp from '../LogoComponents/logoComp';
-// import logo from '../../Images/logo.png';
+import LogoComp from '../Reusable/LogoComponents/logoComp';
 import loginimg from '../../Images/login-image.png';
 import Success from '../Success/Success';
 
@@ -30,7 +29,7 @@ function SignUp() {
   const [holderName, setHolderName] = useState('');
   const [value, setValue] = useState('');
   const [email, setEmail] = useState('');
-  // const [contact, setContact] = useState('');
+  const [contact, setContact] = useState('');
   // const [businessLogo, setBusinessLogo] = useState(null);
   const [disableButton, setDisableButton] = useState(true);
   const [success, setSuccess] = useState(false);
@@ -58,10 +57,10 @@ function SignUp() {
     setDisableButton(false);
   };
 
-  // const onChangeContact = (val) => {
-  //   // console.log(val);
-  //   setContact(val);
-  // };
+  const onChangeContact = (val) => {
+    // console.log(val);
+    setContact(val);
+  };
 
   const onRegister = () => {
     // console.log(businessName, holderName, value.label, contact, email, businessLogo);
@@ -78,12 +77,19 @@ function SignUp() {
     <Grid
       // xs={12}
       sx={{
-        backgroundColor: '#F5F8FE', height: '100vh', width: '100%', paddingLeft: '3%',
+        backgroundColor: '#F5F8FE',
+        height: '100vh',
+        width: '100%',
+        paddingLeft: '3%',
       }}
     >
       <LogoComp />
       {success ? (
-        <Success businessName={businessName} email={email} toggle={onRegister} />
+        <Success
+          businessName={businessName}
+          email={email}
+          toggle={onRegister}
+        />
       ) : (
         <Grid
           // className={styles.gridContainer}
@@ -122,7 +128,10 @@ function SignUp() {
               // width: '50%',
             }}
           >
-            <Card elevation={3} sx={{ width: '70%', height: '100%', padding: '1.5% 4% 1.5% 4%' }}>
+            <Card
+              elevation={3}
+              sx={{ width: '70%', height: '100%', padding: '1.5% 4% 1.5% 4%' }}
+            >
               <CardContent>
                 <Typography sx={{ fontSize: '1.35rem', fontWeight: 600 }}>
                   Sign Up !
@@ -130,67 +139,87 @@ function SignUp() {
                 <Grid sx={{ display: 'flex' }}>
                   <Grid>
                     <Typography sx={{ fontSize: '1rem', fontWeight: 550 }}>
-                      Already have an account?
-                      &nbsp;
+                      Already have an account? &nbsp;
                     </Typography>
                   </Grid>
                   <Link to="/log-in" style={{ textDecoration: 'none' }}>
                     <Grid>
-                      <Typography sx={{
-                        fontSize: '1rem',
-                        fontWeight: 550,
-                        color: '#68E98D',
-                        '&:hover': {
-                          textDecorationLine: 'underline',
-                          cursor: 'pointer',
-                        },
-                      }}
+                      <Typography
+                        sx={{
+                          fontSize: '1rem',
+                          fontWeight: 550,
+                          color: '#68E98D',
+                          '&:hover': {
+                            textDecorationLine: 'underline',
+                            cursor: 'pointer',
+                          },
+                        }}
                       >
                         {' '}
                         Login
                       </Typography>
                     </Grid>
                   </Link>
-
                 </Grid>
                 <Grid>
                   <Grid sx={{ margin: '3.5% 0 3% 0' }}>
                     <InputField
+                      type="text"
                       changeAction={onChangeBusiness}
                       searchValue={businessName}
                       placeholder="Enter Bussiness Name"
-                      icon={<AccountCircleOutlinedIcon fontSize="small" style={{ color: 'grey', marginRight: '20px' }} />}
+                      icon={(
+                        <AccountCircleOutlinedIcon
+                          fontSize="small"
+                          style={{ color: 'grey', marginRight: '20px' }}
+                        />
+                      )}
                       label="Enter Bussiness Name"
                     />
                   </Grid>
                   <Grid sx={{ margin: '3.5% 0 3% 0' }}>
                     <InputField
+                      type="text"
                       changeAction={onChangeHolder}
                       searchValue={holderName}
                       placeholder="Enter Your Name"
-                      icon={<AccountCircleOutlinedIcon fontSize="small" style={{ color: 'grey', marginRight: '20px' }} />}
+                      icon={(
+                        <AccountCircleOutlinedIcon
+                          fontSize="small"
+                          style={{ color: 'grey', marginRight: '20px' }}
+                        />
+                      )}
                       label="Enter Your Name"
                     />
                   </Grid>
                   <Grid sx={{ margin: '3.5% 0 3% 0' }}>
-                    <Grid sx={{ marginBottom: '8px' }}>
-                      Select Country
-                    </Grid>
+                    <Grid sx={{ marginBottom: '8px' }}>Select Country</Grid>
                     <Grid sx={{ width: '100%' }}>
-                      <Select options={options} styles={customStyles} placeholder="select country" value={value} onChange={changeHandler} />
-
+                      <Select
+                        options={options}
+                        styles={customStyles}
+                        placeholder="select country"
+                        value={value}
+                        onChange={changeHandler}
+                      />
                     </Grid>
                   </Grid>
                   <Grid sx={{ margin: '3.5% 0 3% 0' }}>
                     <InputField
+                      type="text"
                       changeAction={onChangeEmail}
                       searchValue={email}
                       placeholder="Enter Your Email"
-                      icon={<EmailOutlinedIcon fontSize="small" style={{ color: 'grey', marginRight: '20px' }} />}
+                      icon={(
+                        <EmailOutlinedIcon
+                          fontSize="small"
+                          style={{ color: 'grey', marginRight: '20px' }}
+                        />
+                      )}
                       label="Contact"
                     />
                   </Grid>
-                  {/* <Grid sx={{ margin: '2% 0 2% 0' }}>
+                  <Grid sx={{ margin: '2% 0 2% 0' }}>
                     <ReactPhoneInput
                       inputExtraProps={{
                         name: 'phone',
@@ -199,10 +228,10 @@ function SignUp() {
                       }}
                       inputStyle={{ width: '100%', height: '35px' }}
                       defaultCountry="in"
-                      // value={contact}
+                      value={contact}
                       onChange={onChangeContact}
                     />
-                  </Grid> */}
+                  </Grid>
                   {/* <Grid sx={{ margin: '3.5% 0 3% 0' }}>
                     <Grid marginBottom="8px">
                       Bussiness Logo
@@ -230,13 +259,11 @@ function SignUp() {
                   </Button>
                 </Grid>
                 {/* <SelectCountry /> */}
-
               </CardContent>
             </Card>
           </Grid>
         </Grid>
       )}
-
     </Grid>
   );
 }

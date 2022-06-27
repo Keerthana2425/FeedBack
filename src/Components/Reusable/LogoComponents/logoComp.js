@@ -1,7 +1,8 @@
 import React from 'react';
 import { Grid } from '@mui/material';
 import { Link } from 'react-router-dom';
-import logo from '../../Images/logo.png';
+// import logo from '../../Images/logo.png';
+import logo from '../../../Images/logo.png';
 
 function LogoComp() {
   return (

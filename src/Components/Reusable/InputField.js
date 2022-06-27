@@ -3,7 +3,7 @@ import { OutlinedInput, Grid } from '@mui/material';
 
 function InputField(props) {
   const {
-    changeAction, searchValue, placeholder, icon, label,
+    changeAction, searchValue, placeholder, icon, label, type,
   } = props;
 
   return (
@@ -12,6 +12,7 @@ function InputField(props) {
       <OutlinedInput
         required
         fullWidth
+        type={type}
         value={searchValue}
         onChange={changeAction}
         autoComplete="off"
