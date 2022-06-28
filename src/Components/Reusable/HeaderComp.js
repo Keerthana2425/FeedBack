@@ -5,7 +5,7 @@ import {
 // import Logo from '../../Images/logo.png';
 // import { Dashboard } from '@mui/icons-material';
 import DashBoard from '../LandingPage/DashBoard';
-import LogoComp from './LogoComponents/logoComp';
+// import LogoComp from './LogoComponents/logoComp';
 import Questionaries from '../LandingPage/Questionaries';
 import Displayer from '../LandingPage/Displayer';
 import SendLink from '../LandingPage/sendLink';
@@ -21,8 +21,13 @@ function HeaderComp(props) {
 
   return (
     <>
-      <Grid container sx={{ height: '8vh', backgroundColor: '#263238', color: '#68E98D' }}>
-        <Grid item xs={2} sx={{ height: '100%', border: '1px solid white' }}>
+      <Grid
+        container
+        sx={{
+          height: '54px', backgroundColor: '#263238', color: '#68E98D', paddingTop: '0.5%',
+        }}
+      >
+        <Grid item xs={2} sx={{ height: '100%' }}>
           {/* <img
           style={{
             height: '70%', position: 'relative', top: '15%', left: '10%',
@@ -30,13 +35,14 @@ function HeaderComp(props) {
           src={Logo}
           alt="logo"
         /> */}
-          <LogoComp />
+          {/* <LogoComp /> */}
+          logo
         </Grid>
         <Grid
           item
           xs={5}
           sx={{
-            display: 'flex', alignSelf: 'flex-end', justifyContent: 'center',
+            display: 'flex', alignSelf: 'flex-end', justifyContent: 'center', height: '100%',
           }}
         >
           <Tabs
@@ -52,8 +58,14 @@ function HeaderComp(props) {
               },
             }}
           >
-            <Tab label="Dashboard" />
-            <Tab label="Questionaries" />
+            <Tab
+              label="Dashboard"
+              sx={{ height: '100%' }}
+            />
+            <Tab
+              label="Questionaries"
+              sx={{ height: '100%' }}
+            />
 
           </Tabs>
         </Grid>
@@ -61,18 +73,18 @@ function HeaderComp(props) {
           ppppp
         </Grid>
       </Grid>
-      <Grid sx={{ backgroundColor: '#DEF6E5', padding: '0% 2.5%', height: '91vh' }}>
+      <Grid sx={{ backgroundColor: '#E6E7E9', padding: '0% 2.5%', height: '91vh' }}>
         <Displayer />
         <Grid
           container
           sx={{
-            height: '80%', display: 'flex', justifyContent: 'space-between',
+            height: '81%', display: 'flex', justifyContent: 'space-between',
           }}
         >
           <Grid xs={7}>
             {value === 0 ? (<DashBoard />) : (<Questionaries />)}
           </Grid>
-          <Grid xs={4.8}>
+          <Grid xs={4.9}>
             <SendLink />
           </Grid>
         </Grid>

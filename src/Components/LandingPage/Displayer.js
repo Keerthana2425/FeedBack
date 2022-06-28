@@ -20,7 +20,7 @@ function Displayer() {
           rating
         </Grid>
       </Grid>
-      <Grid xs={4.8}>
+      <Grid xs={4.8} sx={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-end' }}>
         current rating set to star
       </Grid>
     </Grid>

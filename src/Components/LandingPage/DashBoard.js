@@ -1,69 +1,174 @@
-import { Paper, Typography } from '@mui/material';
+import * as React from 'react';
+import debounce from 'lodash.debounce';
+import Paper from '@mui/material/Paper';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
 import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
+import TablePagination from '@mui/material/TablePagination';
 import TableRow from '@mui/material/TableRow';
-// import Paper from '@mui/material/Paper';
-import React from 'react';
+import { Grid, OutlinedInput } from '@mui/material';
+import { useMemo, useEffect, useState } from 'react';
+import SearchIcon from '@mui/icons-material/Search';
 
-function createData(name, calories, fat, carbs, protein) {
+const columns = [
+  {
+    id: 'name', label: 'Name', minWidth: 170, align: 'center',
+  },
+  {
+    id: 'code', label: 'ISO\u00a0Code', minWidth: 170, align: 'center',
+  },
+  {
+    id: 'population',
+    label: 'Population',
+    minWidth: 100,
+    align: 'center',
+    format: (value) => value.toLocaleString('en-US'),
+  },
+  {
+    id: 'size',
+    label: 'Size\u00a0(km\u00b2)',
+    minWidth: 170,
+    align: 'center',
+    format: (value) => value.toLocaleString('en-US'),
+  },
+  // {
+  //   id: 'density',
+  //   label: 'Density',
+  //   minWidth: 170,
+  //   align: 'right',
+  //   format: (value) => value.toFixed(2),
+  // },
+];
+
+function createData(name, code, population, size) {
+  // const density = population / size;
   return {
-    name, calories, fat, carbs, protein,
+    name, code, population, size,
   };
 }
 
-const rows = [
-  createData('Frozen yoghurt', 159, 6.0, 24),
-  createData('Ice cream sandwich', 237, 9.0, 37),
-  createData('Eclair', 262, 16.0, 24),
-  createData('Cupcake', 305, 3.7, 67),
-  createData('Gingerbread', 356, 16.0, 49),
+const rowsData = [
+  createData('India', 'IN', 1324171354, 3287263),
+  createData('China', 'CN', 1403500365, 9596961),
+  createData('Italy', 'IT', 60483973, 301340),
+  createData('United States', 'US', 327167434, 9833520),
+  createData('Canada', 'CA', 37602103, 9984670),
+  createData('Australia', 'AU', 25475400, 7692024),
+  createData('Germany', 'DE', 83019200, 357578),
+  createData('Ireland', 'IE', 4857000, 70273),
+  createData('Mexico', 'MX', 126577691, 1972550),
+  createData('Japan', 'JP', 126317000, 377973),
+  createData('France', 'FR', 67022000, 640679),
+  createData('United Kingdom', 'GB', 67545757, 242495),
+  createData('Russia', 'RU', 146793744, 17098246),
+  createData('Nigeria', 'NG', 200962417, 923768),
+  createData('Brazil', 'BR', 210147125, 8515767),
 ];
 
-function DashBoard() {
+export default function ColumnGroupingTable() {
+  const [searchTerm, setSearchTerm] = useState('');
+
+  const [page, setPage] = React.useState(0);
+  const [rowsPerPage, setRowsPerPage] = React.useState(6);
+
+  const handleChange = (e) => {
+    setSearchTerm(e.target.value);
+  };
+  let rows = rowsData;
+  if (searchTerm !== '') {
+    rows = rows.filter((row) => row.name.includes(searchTerm));
+  }
+
+  const handleChangePage = (event, newPage) => {
+    setPage(newPage);
+  };
+
+  const handleChangeRowsPerPage = (event) => {
+    setRowsPerPage(+event.target.value);
+    setPage(0);
+  };
+
+  const debouncedResults = useMemo(() => debounce(handleChange, 300), []);
+
+  useEffect(() => () => {
+    debouncedResults.cancel();
+  });
+
   return (
-    <Paper sx={{ height: '100%', borderRadius: '10px' }}>
-      <TableContainer>
-        <Table sx={{ minWidth: 600 }} aria-label="simple table">
-          <TableHead>
-            <TableRow>
-              <TableCell>
-                <Typography fontSize="1.1rem" fontWeight="500">
-                  Customer
-                </Typography>
-              </TableCell>
-              <TableCell align="center">Date & Time</TableCell>
-              <TableCell align="center">Overall Rating</TableCell>
-              <TableCell align="center">Action</TableCell>
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            {rows.map((row) => (
-              <TableRow
-                key={row.name}
-                sx={{ height: '9vh' }}
-              >
-                <TableCell component="th" scope="row">
-                  {row.name}
-                </TableCell>
-                <TableCell align="center">{row.calories}</TableCell>
-                <TableCell align="center">{row.fat}</TableCell>
-                <TableCell align="center">{row.carbs}</TableCell>
+    <Paper sx={{ height: '95%', paddingTop: '3%' }}>
+      <Grid
+        container
+        sx={{
+          height: '48px', padding: '0% 3%', display: 'flex', alignItems: 'center', justifyContent: 'space-between',
+        }}
+      >
+        <Grid item>
+          recent FeedBack
+        </Grid>
+        <Grid item>
+          <OutlinedInput
+            onChange={debouncedResults}
+            type="search"
+            placeholder="search"
+            endAdornment={<SearchIcon fontSize="small" sx={{ color: '#9F9F9F' }} />}
+            sx={{
+              height: '34px',
+              // '&:hover': {
+              //   border: 'none',
+              // },
+              // '&:active': {
+              //   border: 'none',
+              // },
+            }}
+          />
+          date
+        </Grid>
+      </Grid>
+      <Paper sx={{ width: '100%', marginTop: '3%' }}>
+        <TableContainer sx={{ maxHeight: 400 }}>
+          <Table stickyHeader aria-label="sticky table">
+            <TableHead>
+              <TableRow>
+                <TableCell align="center">Dessert (100g serving)</TableCell>
+                <TableCell align="center">Calories</TableCell>
+                <TableCell align="center">Fat&nbsp;(g)</TableCell>
+                <TableCell align="center">Carbs&nbsp;(g)</TableCell>
+                {/* <TableCell align="right">Protein&nbsp;(g)</TableCell> */}
               </TableRow>
-            ))}
-          </TableBody>
-        </Table>
-      </TableContainer>
+            </TableHead>
+            <TableBody>
+              {rows
+                .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+                .map((row) => (
+                  <TableRow hover role="checkbox" tabIndex={-1} key={row.code}>
+                    {columns.map((column) => {
+                      const value = row[column.id];
+                      return (
+                        <TableCell key={column.id} align={column.align}>
+                          {column.format && typeof value === 'number'
+                            ? column.format(value)
+                            : value}
+                        </TableCell>
+                      );
+                    })}
+                  </TableRow>
+                ))}
+            </TableBody>
+          </Table>
+        </TableContainer>
+        <TablePagination
+          rowsPerPageOptions={[6, 12]}
+          component="div"
+          count={rows.length}
+          rowsPerPage={rowsPerPage}
+          page={page}
+          onPageChange={handleChangePage}
+          onRowsPerPageChange={handleChangeRowsPerPage}
+        />
+      </Paper>
     </Paper>
+
   );
 }
-
-export default DashBoard;
-
-// export default function BasicTable() {
-//   return (
-
-//   );
-// }
