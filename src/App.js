@@ -8,7 +8,8 @@ import SignUp from './Components/SignUp/SignUp';
 // import SelectCountry from './Components/Reusable/SelectCountry';
 // import SelectCountry from './Components/Reusable/SelectCountry';
 import LandingPage from './Components/LandingPage/LandingPage';
-import HeaderComp from './Components/Reusable/HeaderComp';
+// import HeaderComp from './Components/Reusable/HeaderComp';
+import FeedBack from './Components/Customer/Rating/FeedBack';
 
 function App() {
   return (
@@ -32,8 +33,11 @@ function App() {
         <Route exact path="/landing">
           <LandingPage />
         </Route>
-        <Route exact path="/head">
+        {/* <Route exact path="/head">
           <HeaderComp />
+        </Route> */}
+        <Route exact path="/feedback">
+          <FeedBack />
         </Route>
       </Switch>
     </BrowserRouter>

@@ -77,7 +77,7 @@ function SignUp() {
     <Grid
       // xs={12}
       sx={{
-        backgroundColor: '#F5F8FE',
+        backgroundColor: '#E6E7E9',
         height: '100vh',
         width: '100%',
         paddingLeft: '3%',

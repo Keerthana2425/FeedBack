@@ -8,7 +8,9 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TablePagination from '@mui/material/TablePagination';
 import TableRow from '@mui/material/TableRow';
-import { Grid, OutlinedInput } from '@mui/material';
+import {
+  Grid, OutlinedInput, Typography,
+} from '@mui/material';
 import { useMemo, useEffect, useState } from 'react';
 import SearchIcon from '@mui/icons-material/Search';
 
@@ -27,11 +29,11 @@ const columns = [
     format: (value) => value.toLocaleString('en-US'),
   },
   {
-    id: 'size',
-    label: 'Size\u00a0(km\u00b2)',
+    id: 'actions',
+    label: 'Actions',
     minWidth: 170,
     align: 'center',
-    format: (value) => value.toLocaleString('en-US'),
+    // format: (value) => value.toLocaleString('en-US'),
   },
   // {
   //   id: 'density',
@@ -42,15 +44,21 @@ const columns = [
   // },
 ];
 
-function createData(name, code, population, size) {
+// const btnView = () => (
+//   <Button variant="contained">
+//     view
+//   </Button>
+// );
+
+function createData(name, code, population, actions) {
   // const density = population / size;
   return {
-    name, code, population, size,
+    name, code, population, actions,
   };
 }
 
 const rowsData = [
-  createData('India', 'IN', 1324171354, 3287263),
+  createData('India', 'IN', 1324171354, 687654),
   createData('China', 'CN', 1403500365, 9596961),
   createData('Italy', 'IT', 60483973, 301340),
   createData('United States', 'US', 327167434, 9833520),
@@ -70,8 +78,8 @@ const rowsData = [
 export default function ColumnGroupingTable() {
   const [searchTerm, setSearchTerm] = useState('');
 
-  const [page, setPage] = React.useState(0);
-  const [rowsPerPage, setRowsPerPage] = React.useState(6);
+  const [page, setPage] = useState(0);
+  const [rowsPerPage, setRowsPerPage] = useState(6);
 
   const handleChange = (e) => {
     setSearchTerm(e.target.value);
@@ -104,9 +112,11 @@ export default function ColumnGroupingTable() {
           height: '48px', padding: '0% 3%', display: 'flex', alignItems: 'center', justifyContent: 'space-between',
         }}
       >
-        <Grid item>
-          recent FeedBack
-        </Grid>
+        {/* <Grid item> */}
+        <Typography fontSize="1.2rem">
+          Recent Feedback!
+        </Typography>
+        {/* </Grid> */}
         <Grid item>
           <OutlinedInput
             onChange={debouncedResults}
@@ -115,12 +125,6 @@ export default function ColumnGroupingTable() {
             endAdornment={<SearchIcon fontSize="small" sx={{ color: '#9F9F9F' }} />}
             sx={{
               height: '34px',
-              // '&:hover': {
-              //   border: 'none',
-              // },
-              // '&:active': {
-              //   border: 'none',
-              // },
             }}
           />
           date
@@ -131,10 +135,10 @@ export default function ColumnGroupingTable() {
           <Table stickyHeader aria-label="sticky table">
             <TableHead>
               <TableRow>
-                <TableCell align="center">Dessert (100g serving)</TableCell>
-                <TableCell align="center">Calories</TableCell>
-                <TableCell align="center">Fat&nbsp;(g)</TableCell>
-                <TableCell align="center">Carbs&nbsp;(g)</TableCell>
+                <TableCell align="center">number (100g serving)</TableCell>
+                <TableCell align="center">date&time</TableCell>
+                <TableCell align="center">rating</TableCell>
+                <TableCell align="center">Actions</TableCell>
                 {/* <TableCell align="right">Protein&nbsp;(g)</TableCell> */}
               </TableRow>
             </TableHead>
@@ -169,6 +173,5 @@ export default function ColumnGroupingTable() {
         />
       </Paper>
     </Paper>
-
   );
 }

@@ -3,7 +3,7 @@ import { OutlinedInput, Grid } from '@mui/material';
 
 function InputField(props) {
   const {
-    changeAction, searchValue, placeholder, icon, label, type,
+    changeAction, searchValue, placeholder, icon, label, type, icon2,
   } = props;
 
   return (
@@ -18,6 +18,7 @@ function InputField(props) {
         autoComplete="off"
         placeholder={placeholder}
         startAdornment={icon}
+        endAdornment={icon2}
         sx={{
           bgcolor: '#fff',
           border: '0.5px solid #c0c1c1',

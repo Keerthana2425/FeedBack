@@ -3,46 +3,33 @@ import {
 } from '@mui/material';
 import React from 'react';
 // import LogoComp from '../LogoComponents/logoComp';
+import tick from '../../Images/tick2.png';
+import shop from '../../Images/shop.svg';
+import rate from '../../Images/rate.svg';
 
 function Success(props) {
   const { businessName, email, toggle } = props;
   return (
-  // <Grid
-  //   container
-  //   sx={{
-  //     backgroundColor: '#F5F8FE',
-  //     height: '100vh',
-  //     width: '100%',
-  //     paddingLeft: '3%',
-  //     paddingRight: '3%',
-
-    //   }}
-    // >
     <>
-      {/* <Grid>
-        <LogoComp />
-
-      </Grid> */}
-      <Grid container sx={{ width: '100%', height: '80vh' }}>
-        <Grid item xs={3} sx={{ border: '1px solid black', minWidth: '300px' }}>
-          img 1
+      <Grid container justifyContent="space-between" sx={{ width: '100%', height: '80vh' }}>
+        <Grid item container alignItems="center" xs={3} sx={{ minWidth: '300px' }}>
+          <img src={shop} style={{ height: '50%', width: '100%' }} alt="success" />
         </Grid>
-        <Grid item xs={6} sx={{ minWidth: '550px' }}>
+        <Grid item xs={5.8} sx={{ minWidth: '550px' }}>
           <Card
             elevation={3}
             sx={{ padding: '4% 3% 4% 3%' }}
           >
             <CardContent>
               <Grid
+                container
+                alignItems="center"
+                justifyContent="center"
                 sx={{
                   height: '100px',
-                  border: '2px solid red',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
                 }}
               >
-                img
+                <img src={tick} style={{ height: '90%' }} alt="success" />
               </Grid>
               <br />
               <Grid sx={{
@@ -52,7 +39,9 @@ function Success(props) {
                 <Typography variant="h4" sx={{ fontWeight: 500 }}>
                   Hello
                   {' '}
-                  {businessName}
+                  <span style={{ color: '#68E98D' }}>
+                    {businessName}
+                  </span>
                   ,
                 </Typography>
                 <Typography variant="h4">
@@ -107,8 +96,8 @@ function Success(props) {
             </CardContent>
           </Card>
         </Grid>
-        <Grid item xs={3} sx={{ border: '1px solid blue', minWidth: '300px' }}>
-          img2
+        <Grid item xs={3} container alignItems="center" sx={{ minWidth: '300px' }}>
+          <img src={rate} style={{ height: '50%', width: '100%' }} alt="success" />
         </Grid>
       </Grid>
       {/* </Grid> */}

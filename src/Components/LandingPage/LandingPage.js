@@ -1,5 +1,10 @@
+import { Grid } from '@mui/material';
 import React, { useState } from 'react';
 import HeaderComp from '../Reusable/HeaderComp';
+import DashBoard from './DashBoard';
+import Questionaries from './Questionaries';
+import Displayer from './Displayer';
+import SendLink from './sendLink';
 
 function LandingPage() {
   const [value, setValue] = useState(0);
@@ -7,9 +12,26 @@ function LandingPage() {
     setValue(val);
   };
   return (
-    <div>
+    <>
       <HeaderComp value={value} onTabChange={onTabChange} />
-    </div>
+      <Grid sx={{ backgroundColor: '#E6E7E9', padding: '0% 2.5%', height: '91vh' }}>
+        <Displayer />
+        <Grid
+          container
+          justifyContent="space-between"
+          sx={{
+            height: '81%',
+          }}
+        >
+          <Grid item xs={7}>
+            {value === 0 ? (<DashBoard />) : (<Questionaries />)}
+          </Grid>
+          <Grid item xs={4.9}>
+            <SendLink />
+          </Grid>
+        </Grid>
+      </Grid>
+    </>
   );
 }
 

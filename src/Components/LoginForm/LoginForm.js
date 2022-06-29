@@ -7,6 +7,7 @@ import React, { useState } from 'react';
 import { useHistory, Link } from 'react-router-dom';
 import AccountCircleOutlinedIcon from '@mui/icons-material/AccountCircleOutlined';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
+import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 import InputField from '../Reusable/InputField';
 import loginimg from '../../Images/login-image.png';
 import LogoComp from '../Reusable/LogoComponents/logoComp';
@@ -15,6 +16,7 @@ function LoginForm() {
   // const navigate = useNavigate();
   // const users = useSelector((state) => state);
   // console.log(users);
+  const [type, setType] = useState('password');
   const history = useHistory();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -40,29 +42,6 @@ function LoginForm() {
         paddingLeft: '3%',
       }}
     >
-      {/* <Grid
-        sx={{
-          // border: '2px solid red',
-          height: '14vh',
-          width: '180px',
-          // paddingLeft: '2%',
-          marginLeft: '2%',
-
-        }}
-      >
-        <Link
-          to="/"
-          style={{
-            height: '100%',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-          }}
-        >
-          <img style={{ height: '50%' }} src={logo} alt="logo" />
-
-        </Link>
-      </Grid> */}
       <LogoComp />
 
       <Grid container sx={{ height: '72vh', width: '100%' }}>
@@ -138,7 +117,7 @@ function LoginForm() {
                 </Grid>
                 <Grid sx={{ margin: '3.5% 0 3.5% 0' }}>
                   <InputField
-                    type="password"
+                    type={type}
                     changeAction={handlePassword}
                     searchValue={password}
                     placeholder="Enter password"
@@ -146,6 +125,19 @@ function LoginForm() {
                       <LockOutlinedIcon
                         fontSize="small"
                         style={{ color: 'grey', marginRight: '20px' }}
+                      />
+                    )}
+                    icon2={(
+                      <VisibilityOffIcon
+                        fontSize="small"
+                        style={{ color: 'grey', cursor: 'pointer' }}
+                        onClick={() => {
+                          if (type === 'password') {
+                            setType('text');
+                          } else {
+                            setType('password');
+                          }
+                        }}
                       />
                     )}
                     label="Password"
