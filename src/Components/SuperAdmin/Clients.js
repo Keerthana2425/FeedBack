@@ -1,13 +1,15 @@
 import React, { useState } from 'react';
 import {
-  Button, Grid, TableHead, Chip,
+  Button, Grid, TableHead, Chip, Typography,
 } from '@mui/material';
 import PropTypes from 'prop-types';
+import EditIcon from '@mui/icons-material/Edit';
 import { useTheme } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
+import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 import TableContainer from '@mui/material/TableContainer';
 import TableFooter from '@mui/material/TableFooter';
 import TablePagination from '@mui/material/TablePagination';
@@ -20,7 +22,7 @@ import KeyboardArrowRight from '@mui/icons-material/KeyboardArrowRight';
 import LastPageIcon from '@mui/icons-material/LastPage';
 
 const TableHeadStyle = {
-  fontSize: '1.2rem', fontWeight: 'bold', color: 'grey',
+  fontSize: '1.1rem', fontWeight: 'bold', color: 'grey',
 };
 
 function TablePaginationActions(props) {
@@ -86,31 +88,31 @@ TablePaginationActions.propTypes = {
   rowsPerPage: PropTypes.number.isRequired,
 };
 
-function createData(slno, regdate, name, contact, country, status) {
+function createData(slno, regdate, bname, client, contact, email, country, status) {
   return {
-    slno, regdate, name, contact, country, status,
+    slno, regdate, bname, client, contact, email, country, status,
   };
 }
 
 const rows = [
-  createData(1, '29-6-22', 'keerthana', 9985477502, 'India', 'Approved'),
-  createData(2, '29-6-22', 'keerthana', 9985477502, 'India', 'Approved'),
-  createData(3, '29-6-22', 'keerthana', 9985477502, 'India', 'Approved'),
-  createData(4, '29-6-22', 'keerthana', 9985477502, 'India', 'Approved'),
-  createData(5, '29-6-22', 'keerthana', 9985477502, 'India', 'Approved'),
-  createData(6, '29-6-22', 'keerthana', 9985477502, 'India', 'Pending'),
-  createData(7, '29-6-22', 'keerthana', 9985477502, 'India', 'Approved'),
-  createData(8, '29-6-22', 'keerthana', 9985477502, 'India', 'Approved'),
-  createData(9, '29-6-22', 'keerthana', 9985477502, 'India', 'Approved'),
-  createData(10, '29-6-22', 'keerthana', 9985477502, 'India', 'Pending'),
-  createData(11, '29-6-22', 'keerthana', 9985477502, 'India', 'Pending'),
-  createData(12, '29-6-22', 'Keerthana', 9985477502, 'India', 'Approved'),
+  createData(1, '29-6-22', 'shopewry21376q23', 'keerthana', 9985477502, 'keerthanap794@gmail.com', 'India', 'Approved'),
+  createData(2, '29-6-22', 'shopewry21376q23', 'keerthana', 9985477502, 'keerthanap794@gmail.com', 'India', 'Approved'),
+  createData(3, '29-6-22', 'shopewry21376q23', 'keerthana', 9985477502, 'keerthanap794@gmail.com', 'India', 'Approved'),
+  createData(4, '29-6-22', 'shopewry21376q23', 'keerthana', 9985477502, 'keerthanap794@gmail.com', 'India', 'Approved'),
+  createData(5, '29-6-22', 'shopewry21376q23', 'keerthana', 9985477502, 'keerthanap794@gmail.com', 'India', 'Approved'),
+  createData(6, '29-6-22', 'shopewry21376q23', 'keerthana', 9985477502, 'keerthanap794@gmail.com', 'India', 'Pending'),
+  createData(7, '29-6-22', 'shopewry21376q23', 'keerthana', 9985477502, 'keerthanap794@gmail.com', 'India', 'Approved'),
+  createData(8, '29-6-22', 'shopewry21376q23', 'keerthana', 9985477502, 'keerthanap794@gmail.com', 'India', 'Approved'),
+  createData(9, '29-6-22', 'shopewry21376q23', 'keerthana', 9985477502, 'keerthanap794@gmail.com', 'India', 'Approved'),
+  createData(10, '29-6-22', 'shopewry21376q23', 'keerthana', 9985477502, 'keerthanap794@gmail.com', 'India', 'Pending'),
+  createData(11, '29-6-22', 'shopewry21376q23', 'keerthana', 9985477502, 'keerthanap794@gmail.com', 'India', 'Pending'),
+  createData(12, '29-6-22', 'shopewry21376q23', 'Keerthana', 9985477502, 'keerthanap794@gmail.com', 'India', 'Approved'),
 
 ].sort((a, b) => (a.slno < b.slno ? 1 : -1));
 
 function Clients() {
   const [page, setPage] = useState(0);
-  const [rowsPerPage, setRowsPerPage] = useState(7);
+  const [rowsPerPage, setRowsPerPage] = useState(6);
 
   // Avoid a layout jump when reaching the last page with empty rows.
   const emptyRows = page > 0 ? Math.max(0, (1 + page) * rowsPerPage - rows.length) : 0;
@@ -127,33 +129,57 @@ function Clients() {
   return (
     <Grid width="100%" height="92vh" sx={{ backgroundColor: '#E6E7E9' }}>
       <Grid container justifyContent="space-between" height="60px">
-        <Grid xs={7}>
+        <Grid item xs={7}>
           something
         </Grid>
-        <Grid xs={5}>
-          something
+        <Grid item container justifyContent="space-between" alignItems="center" xs={5} sx={{ paddingRight: '2%' }}>
+          <Grid>
+            something
+          </Grid>
+          <Grid width="27%">
+            <Button
+              fullWidth
+              variant="contained"
+              sx={{
+                textTransform: 'none',
+                fontSize: '1.02rem',
+                borderRadius: '14px',
+                color: 'black',
+                backgroundColor: '#68E98D',
+                '&:hover': {
+                  bgcolor: '#68E98D',
+                },
+              }}
+            >
+              <AddCircleOutlineIcon fontSize="small" style={{ marginRight: '3%' }} />
+              Add Client
+            </Button>
+          </Grid>
         </Grid>
       </Grid>
-      <Grid>
+      <Grid padding="0% 2%">
         <TableContainer component={Paper}>
           <Table sx={{ minWidth: 500 }} aria-label="custom pagination table">
             <TableHead>
               <TableCell style={TableHeadStyle} align="center">
                 S.No
               </TableCell>
-              <TableCell align="center" style={TableHeadStyle}>
+              <TableCell align="left" style={TableHeadStyle}>
                 Reg Date
               </TableCell>
-              <TableCell align="center" style={TableHeadStyle}>
-                client name
+              <TableCell align="left" style={TableHeadStyle}>
+                Business name
               </TableCell>
-              <TableCell align="center" style={TableHeadStyle}>
+              <TableCell align="left" style={TableHeadStyle}>
+                Client name
+              </TableCell>
+              <TableCell align="left" style={TableHeadStyle}>
                 contact
               </TableCell>
-              <TableCell align="center" style={TableHeadStyle}>
+              <TableCell align="left" style={TableHeadStyle}>
                 country
               </TableCell>
-              <TableCell align="center" style={TableHeadStyle}>
+              <TableCell align="left" style={TableHeadStyle}>
                 status
               </TableCell>
             </TableHead>
@@ -163,38 +189,67 @@ function Clients() {
                 : rows
               ).map((row) => (
                 <TableRow key={row.slno}>
-                  <TableCell style={{ width: 50, fontSize: '1.1rem' }} align="center">
+                  <TableCell style={{ width: 30, fontSize: '1.05rem' }} align="center">
                     {row.slno}
                   </TableCell>
-                  <TableCell style={{ width: 50, fontSize: '1.08rem' }} align="center">
+                  <TableCell style={{ width: 50, fontSize: '1.05rem' }} align="left">
                     {row.regdate}
                   </TableCell>
-                  <TableCell style={{ width: 100, fontSize: '1.1rem' }} align="center">
-                    {row.name}
+                  <TableCell style={{ width: 100, fontSize: '1.05rem' }} align="left">
+                    {row.bname}
                   </TableCell>
-                  <TableCell style={{ width: 100, fontSize: '1.06rem' }} align="center">
-                    {row.contact}
+                  <TableCell style={{ width: 100, fontSize: '1.05rem' }} align="left">
+                    {row.client}
                   </TableCell>
-                  <TableCell style={{ width: 100, fontSize: '1.1rem' }} align="center">
+                  <TableCell style={{ width: 100 }} align="left">
+                    <Typography fontSize="0.98rem">
+                      {row.contact}
+                    </Typography>
+                    <Typography fontSize="0.8rem">
+                      {row.email}
+                    </Typography>
+                  </TableCell>
+                  <TableCell style={{ width: 70, fontSize: '1.05rem' }} align="left">
                     {row.country}
                   </TableCell>
-                  <TableCell style={{ width: 100, fontSize: '1.1rem', fontWeight: 'bold' }} align="center">
+                  <TableCell style={{ width: 60, fontSize: '1.0rem', fontWeight: 'bold' }} align="left">
                     {row.status === 'Approved' ? (<Chip label={row.status} variant="contained" style={{ backgroundColor: '#E5F6DF', color: '#68E98D' }} />) : (<Chip label={row.status} variant="contained" style={{ backgroundColor: '#F2CFD0', color: '#F2332F' }} />)}
                   </TableCell>
-                  <TableCell style={{ width: 100 }} align="center">
-                    <Button
-                      variant="contained"
-                      sx={{
-                        borderRadius: '6px',
-                        color: '#000',
-                        backgroundColor: '#68E98D',
-                        '&:hover': {
-                          backgroundColor: '#68E98D',
-                        },
-                      }}
-                    >
-                      view
-                    </Button>
+                  <TableCell style={{ width: 90 }} align="left">
+                    <Grid container justifyContent="space-around">
+                      <Button
+                        size="small"
+                        variant="contained"
+                        sx={{
+                          // width: '10px',
+                          textTransform: 'none',
+                          borderRadius: '6px',
+                          color: '#000',
+                          backgroundColor: '#E6E7E9',
+                          '&:hover': {
+                            backgroundColor: '#BEBEBE',
+                          },
+                        }}
+                      >
+                        <EditIcon fontSize="small" />
+                      </Button>
+                      <Button
+                        size="small"
+                        variant="contained"
+                        sx={{
+                          textTransform: 'none',
+                          borderRadius: '6px',
+                          color: '#000',
+                          backgroundColor: '#E6E7E9',
+                          '&:hover': {
+                            backgroundColor: '#BEBEBE',
+                          },
+                        }}
+                      >
+                        View
+                      </Button>
+                    </Grid>
+
                   </TableCell>
                 </TableRow>
               ))}
@@ -208,7 +263,7 @@ function Clients() {
             <TableFooter>
               <TableRow>
                 <TablePagination
-                  rowsPerPageOptions={[7, { label: 'All', value: -1 }]}
+                  rowsPerPageOptions={[6, { label: 'All', value: -1 }]}
                   colSpan={3}
                   count={rows.length}
                   rowsPerPage={rowsPerPage}

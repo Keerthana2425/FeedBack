@@ -3,6 +3,8 @@ import {
   Grid, Typography,
 } from '@mui/material';
 
+import NotificationsNoneIcon from '@mui/icons-material/NotificationsNone';
+
 function SuperHeader() {
   // const { value, onTabChange } = props;
 
@@ -28,8 +30,15 @@ function SuperHeader() {
           Clients
         </Typography>
       </Grid>
-      <Grid item xs={5}>
-        account holder
+      <Grid item xs={5} paddingRight="3%" fontSize="1.2rem">
+        <Grid display="flex" alignItems="center" justifyContent="flex-end" color="white">
+          <NotificationsNoneIcon style={{ marginRight: '5%' }} />
+          account holder
+        </Grid>
+        {/*
+        <Grid item>
+          account holder names
+        </Grid> */}
       </Grid>
     </Grid>
   );
