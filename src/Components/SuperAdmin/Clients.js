@@ -94,17 +94,17 @@ function createData(slno, regdate, name, contact, country, status) {
 
 const rows = [
   createData(1, '29-6-22', 'keerthana', 9985477502, 'India', 'Approved'),
-  createData(2, '29-6-22', 'keerthana', 9985477502, 'India', 'Approved'),
-  createData(3, '29-6-22', 'keerthana', 9985477502, 'India', 'Approved'),
-  createData(4, '29-6-22', 'keerthana', 9985477502, 'India', 'Approved'),
-  createData(5, '29-6-22', 'keerthana', 9985477502, 'India', 'Approved'),
-  createData(6, '29-6-22', 'keerthana', 9985477502, 'India', 'Pending'),
-  createData(7, '29-6-22', 'keerthana', 9985477502, 'India', 'Approved'),
-  createData(8, '29-6-22', 'keerthana', 9985477502, 'India', 'Approved'),
-  createData(9, '29-6-22', 'keerthana', 9985477502, 'India', 'Approved'),
-  createData(10, '29-6-22', 'keerthana', 9985477502, 'India', 'Pending'),
-  createData(11, '29-6-22', 'keerthana', 9985477502, 'India', 'Pending'),
-  createData(12, '29-6-22', 'Keerthana', 9985477502, 'India', 'Approved'),
+  createData(2, '29-6-22', 'venkatesh', 9985477502, 'India', 'Approved'),
+  createData(3, '29-6-22', 'ganesh', 9985477502, 'India', 'Approved'),
+  createData(4, '29-6-22', 'vicky', 9985477502, 'India', 'Approved'),
+  createData(5, '29-6-22', 'venky', 9985477502, 'India', 'Approved'),
+  createData(6, '29-6-22', 'karthik', 9985477502, 'India', 'Pending'),
+  createData(7, '29-6-22', 'ayesha', 9985477502, 'India', 'Approved'),
+  createData(8, '29-6-22', 'mariyam', 9985477502, 'India', 'Approved'),
+  createData(9, '29-6-22', 'ooha', 9985477502, 'India', 'Approved'),
+  createData(10, '29-6-22', 'vani', 9985477502, 'India', 'Pending'),
+  createData(11, '29-6-22', 'kiruthiga', 9985477502, 'India', 'Pending'),
+  createData(12, '29-6-22', 'pallavi', 9985477502, 'India', 'Approved'),
 
 ].sort((a, b) => (a.slno < b.slno ? 1 : -1));
 
@@ -114,7 +114,7 @@ function Clients() {
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(7);
 
-  const toggleDrawer = (anchor, open) => (event) => {
+  const toggleDrawer = (open) => (event) => {
     if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
       return;
     }
@@ -122,14 +122,15 @@ function Clients() {
     setClientShow(open);
   };
 
-  const list = (anchor, rowItem) => (
+  const list = (rowItem) => (
     <Box
       sx={{ width: 550 }}
       role="presentation"
-      onClick={toggleDrawer(anchor, false)}
-      onKeyDown={toggleDrawer(anchor, false)}
+      onClick={toggleDrawer(false)}
+      onKeyDown={toggleDrawer(false)}
     >
       {rowItem.slno}
+      <Divider />
       {rowItem.regdate}
       {rowItem.name}
       <Divider />
@@ -208,29 +209,29 @@ function Clients() {
                     {row.status === 'Approved' ? (<Chip label={row.status} variant="contained" style={{ backgroundColor: '#E5F6DF', color: '#68E98D' }} />) : (<Chip label={row.status} variant="contained" style={{ backgroundColor: '#F2CFD0', color: '#F2332F' }} />)}
                   </TableCell>
                   <TableCell style={{ width: 100 }} align="center">
-                    {/* <React.Fragment key={row.slno}> */}
-                    <Button
-                      variant="contained"
-                      onClick={toggleDrawer('right', true)}
-                      sx={{
-                        borderRadius: '12px',
-                        color: '#000',
-                        backgroundColor: '#68E98D',
-                        '&:hover': {
+                    <React.Fragment key={row.slno}>
+                      <Button
+                        variant="contained"
+                        onClick={toggleDrawer('right', true)}
+                        sx={{
+                          borderRadius: '12px',
+                          color: '#000',
                           backgroundColor: '#68E98D',
-                        },
-                      }}
-                    >
-                      view
-                    </Button>
-                    <Drawer
-                      anchor="right"
-                      open={clientShow}
-                      onClose={toggleDrawer('right', false)}
-                    >
-                      {list('right', row)}
-                    </Drawer>
-                    {/* </React.Fragment> */}
+                          '&:hover': {
+                            backgroundColor: '#68E98D',
+                          },
+                        }}
+                      >
+                        view
+                      </Button>
+                      <Drawer
+                        anchor="right"
+                        open={clientShow}
+                        onClose={toggleDrawer(false)}
+                      >
+                        {list(row)}
+                      </Drawer>
+                    </React.Fragment>
                   </TableCell>
                 </TableRow>
               ))}
