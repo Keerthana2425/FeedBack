@@ -3,20 +3,16 @@ import './App.css';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 
 import HeroPage from './Components/HeroPage/HeroPage';
-import LoginForm from './Components/LoginForm/LoginForm';
+import LoginForm from './Components/SystemAdmin/LoginForm/LoginForm';
 import SignUp from './Components/SignUp/SignUp';
-// import SelectCountry from './Components/Reusable/SelectCountry';
-// import SelectCountry from './Components/Reusable/SelectCountry';
-import LandingPage from './Components/LandingPage/LandingPage';
-// import HeaderComp from './Components/Reusable/HeaderComp';
+import LandingPage from './Components/SystemAdmin/LandingPage/LandingPage';
 import FeedBack from './Components/Customer/Rating/FeedBack';
+import SuperLanding from './Components/SuperAdmin/SuperLanding';
+import TemporaryDrawer from './Components/SuperAdmin/ClientDetails';
 
 function App() {
   return (
     <BrowserRouter>
-      {/* <div>
-        <HeroPage />
-      </div> */}
       <Switch>
         <Route exact path="/log-in">
           <LoginForm />
@@ -38,6 +34,12 @@ function App() {
         </Route> */}
         <Route exact path="/feedback">
           <FeedBack />
+        </Route>
+        <Route exact path="/superLanding">
+          <SuperLanding />
+        </Route>
+        <Route exact path="/clientDetails">
+          <TemporaryDrawer />
         </Route>
       </Switch>
     </BrowserRouter>

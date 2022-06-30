@@ -3,36 +3,10 @@ import {
   Card, CardContent, Grid, Typography,
 } from '@mui/material';
 import React, { useState } from 'react';
-// import { FaStar } from 'react-icons/fa';
-// import StarIcon from '@mui/icons-material/Star';
-// import { Radio, Rating } from "./RatingStyles";
 import StarBorderIcon from '@mui/icons-material/StarBorder';
 import { Radio, Rating } from './RatingStyles';
-// import MoodBadIcon from '@mui/icons-material/MoodBad';
-// import SentimentVeryDissatisfiedIcon from '@mui/icons-material/SentimentVeryDissatisfied';
-// import SentimentSatisfiedIcon from '@mui/icons-material/SentimentSatisfied';
-// import SentimentSatisfiedAltIcon from '@mui/icons-material/SentimentSatisfiedAlt';
-// import InsertEmoticonIcon from '@mui/icons-material/InsertEmoticon';
 
 const questions = ['quasi cupiditate. Voluptatum ducimus voluptates voluptas?', 'quasi cupiditate. Voluptatum ducimus voluptates voluptas?', 'quasi cupiditate. Voluptatum ducimus voluptates voluptas?'];
-// const emojis = [{
-//   value: 1,
-//   icon: <SentimentVeryDissatisfiedIcon />,
-// },
-// {
-//   value: 2,
-//   icon: <MoodBadIcon />,
-// }, {
-//   value: 3,
-//   icon: <SentimentSatisfiedIcon />,
-// }, {
-//   value: 4,
-//   icon: <SentimentSatisfiedAltIcon />,
-// }, {
-//   value: 5,
-//   icon: <InsertEmoticonIcon />,
-// },
-// ];
 
 export default function FeedBack() {
   const [rate, setRate] = useState(0);

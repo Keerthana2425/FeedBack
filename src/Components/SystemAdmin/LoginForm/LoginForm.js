@@ -8,14 +8,12 @@ import { useHistory, Link } from 'react-router-dom';
 import AccountCircleOutlinedIcon from '@mui/icons-material/AccountCircleOutlined';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
-import InputField from '../Reusable/InputField';
-import loginimg from '../../Images/login-image.png';
-import LogoComp from '../Reusable/LogoComponents/logoComp';
+import InputField from '../../Reusable/InputField';
+import loginimg from '../../../Images/login-image.png';
+
+import LogoComp from '../../Reusable/LogoComponents/logoComp';
 
 function LoginForm() {
-  // const navigate = useNavigate();
-  // const users = useSelector((state) => state);
-  // console.log(users);
   const [type, setType] = useState('password');
   const history = useHistory();
   const [email, setEmail] = useState('');
