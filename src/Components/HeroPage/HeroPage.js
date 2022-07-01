@@ -14,7 +14,6 @@ function HeroPage() {
 
         height: '100vh',
         width: '100%',
-        display: 'flex',
         flexDirection: 'column',
         backgroundColor: '#DEF6E5',
       }}
@@ -88,7 +87,7 @@ function HeroPage() {
             <Link to="/log-in" style={{ textDecoration: 'none' }}>
               <Button
                 variant="outlined"
-                                // onClick={this.routeChange}
+                // onClick={this.routeChange}
                 sx={{
                   height: '100%',
                   width: '100%',
@@ -113,21 +112,24 @@ function HeroPage() {
               width: '20%',
             }}
           >
-            <Button
-              variant="contained"
-              sx={{
-                height: '100%',
-                width: '100%',
-                backgroundColor: '#68E98D',
+            <Link to="/sign-up" style={{ textDecoration: 'none' }}>
+              <Button
+                variant="contained"
+                sx={{
+                  height: '100%',
+                  width: '100%',
+                  backgroundColor: '#68E98D',
 
-                color: 'black',
-                '&:hover': {
-                  bgcolor: '#68E98D',
-                },
-              }}
-            >
-              Get Started
-            </Button>
+                  color: 'black',
+                  '&:hover': {
+                    bgcolor: '#68E98D',
+                  },
+                }}
+              >
+                Get Started
+              </Button>
+            </Link>
+
           </Grid>
 
         </Grid>
@@ -143,6 +145,7 @@ function HeroPage() {
           item
           container
           spacing={2}
+          minWidth="500px"
           sx={{
             width: '39%', display: 'flex', flexDirection: 'column', marginTop: '5%', marginLeft: '0%',
           }}
@@ -157,26 +160,30 @@ function HeroPage() {
             Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi non quis
           </Grid>
           <Grid item sx={{ marginTop: '2%' }}>
-            <Button
-              variant="contained"
-              sx={{
-                textTransform: 'none',
-                height: '70%',
-                width: '45%',
-                backgroundColor: '#68E98D',
-                fontSize: '1.2rem',
-                fontWeight: '500',
-                color: 'black',
-                '&:hover': {
-                  bgcolor: '#68E98D',
-                },
-              }}
-            >
-              Request a demo
-            </Button>
+            <Link to="/requestDemo" style={{ textDecoration: 'none' }}>
+              <Button
+                variant="contained"
+                sx={{
+                  textTransform: 'none',
+                  height: '70%',
+                  width: '45%',
+                  backgroundColor: '#68E98D',
+                  fontSize: '1.2rem',
+                  fontWeight: '500',
+                  color: 'black',
+                  '&:hover': {
+                    bgcolor: '#68E98D',
+                  },
+                }}
+              >
+                Request a demo
+              </Button>
+            </Link>
+
           </Grid>
         </Grid>
         <Grid
+          minWidth="400px"
           item
           sx={{
             width: '48%', display: 'flex', alignItems: 'center', justifyContent: 'center',

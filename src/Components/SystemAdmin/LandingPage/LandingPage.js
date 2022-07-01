@@ -14,7 +14,7 @@ function LandingPage() {
   return (
     <Grid height="100vh">
       <HeaderComp value={value} onTabChange={onTabChange} />
-      <Grid sx={{ backgroundColor: '#E6E7E9', padding: '0% 2.5%', height: '91vh' }}>
+      <Grid sx={{ backgroundColor: '#F2F2F2', padding: '0% 2.5%', height: '91vh' }}>
         <Displayer />
         <Grid
           container

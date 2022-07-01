@@ -127,7 +127,7 @@ function Clients() {
   };
 
   return (
-    <Grid width="100%" height="92vh" sx={{ backgroundColor: '#E6E7E9' }}>
+    <Grid width="100%" height="92vh" sx={{ backgroundColor: '#F2F2F2' }}>
       <Grid container justifyContent="space-between" height="60px">
         <Grid item xs={7}>
           something

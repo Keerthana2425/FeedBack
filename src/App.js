@@ -9,6 +9,7 @@ import LandingPage from './Components/SystemAdmin/LandingPage/LandingPage';
 import FeedBack from './Components/Customer/Rating/FeedBack';
 import SuperLanding from './Components/SuperAdmin/SuperLanding';
 import TemporaryDrawer from './Components/SuperAdmin/ClientDetails';
+import RequestDemo from './Components/SystemAdmin/RequestDemo/RequestDemo';
 
 function App() {
   return (
@@ -40,6 +41,9 @@ function App() {
         </Route>
         <Route exact path="/clientDetails">
           <TemporaryDrawer />
+        </Route>
+        <Route exact path="/requestDemo">
+          <RequestDemo />
         </Route>
       </Switch>
     </BrowserRouter>

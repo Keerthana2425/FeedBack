@@ -25,7 +25,7 @@ function InputField(props) {
           textTransform: 'none',
           fontSize: '15px',
           fontWeight: '300',
-          height: '35px',
+          height: '39px',
           borderRadius: '5px',
           minWidth: '280px',
           '& fieldset': {

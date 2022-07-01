@@ -34,7 +34,7 @@ function LoginForm() {
   return (
     <Grid
       sx={{
-        backgroundColor: '#F5F8FE',
+        backgroundColor: '#F2F2F2',
         height: '100vh',
         width: '100',
         paddingLeft: '3%',

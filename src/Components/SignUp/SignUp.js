@@ -19,8 +19,8 @@ import Success from '../Success/Success';
 const customStyles = {
   control: (base) => ({
     ...base,
-    height: 35,
-    minHeight: 35,
+    height: 39,
+    minHeight: 39,
   }),
 };
 
@@ -77,7 +77,7 @@ function SignUp() {
     <Grid
       // xs={12}
       sx={{
-        backgroundColor: '#E6E7E9',
+        backgroundColor: '#F2F2F2',
         height: '100vh',
         width: '100%',
         paddingLeft: '3%',
@@ -92,11 +92,9 @@ function SignUp() {
         />
       ) : (
         <Grid
-          // className={styles.gridContainer}
           wrap="wrap"
           container
           sx={{
-            // border: '1px solid red',
             width: '100%',
           }}
         >
@@ -108,7 +106,6 @@ function SignUp() {
               alignItems: 'center',
               justifyContent: 'center',
               minWidth: '500px',
-              // width: '50%',
             }}
           >
             <img style={{ width: '80%' }} src={loginimg} alt="login" />
@@ -117,15 +114,12 @@ function SignUp() {
             item
             xs={6}
             sx={{
-              // border: '1px solid blue',
               display: 'flex',
               justifyContent: 'center',
               alignItems: 'center',
               height: '50%',
               paddingRight: '1.5%',
               minWidth: '500px',
-
-              // width: '50%',
             }}
           >
             <Card
@@ -226,8 +220,8 @@ function SignUp() {
                         required: true,
                         // autoFocus: true,
                       }}
-                      inputStyle={{ width: '100%', height: '35px' }}
-                      defaultCountry="in"
+                      inputStyle={{ width: '100%', height: '39px' }}
+                      defaultCountry="bh"
                       value={contact}
                       onChange={onChangeContact}
                     />
